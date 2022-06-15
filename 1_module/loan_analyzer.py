@@ -25,8 +25,9 @@ print("--------------------------------------------------------------------")
 print()
 print("PART ONE")
 print()
+
 print()
-print(f"Total number of loans:     {number_of_loans}")
+print(f"Total number of loans:        {number_of_loans}")
 
 # What is the total of all loans?
 # @TODO: Use the `sum` function to calculate the total of all loans in the list.
@@ -36,7 +37,7 @@ print(f"Total number of loans:     {number_of_loans}")
 total_value_of_loans = sum(loan_costs)
 
 print()
-print(f"Total value of loans:     ${total_value_of_loans}")
+print(f"Total value  of loans:    ${total_value_of_loans}.00")
 
 # What is the average loan amount from the list?
 # @TODO: Using the sum of all loans and the total number of loans, calculate the average loan price.
@@ -46,59 +47,83 @@ print(f"Total value of loans:     ${total_value_of_loans}")
 average_loan_amount = total_value_of_loans / number_of_loans
 
 print()
-print(f"Average loan amount:      ${average_loan_amount}")
+print(f"Average loan amount  :    $ {average_loan_amount}0")
 print()
 print("------------------------------------------------------")
 
-# """Part 2: Analyze Loan Data.
+"""Part 2: Analyze Loan Data.
 
-# Analyze the loan to determine the investment evaluation.
+Analyze the loan to determine the investment evaluation.
 
-# Using more detailed data on one of these loans, follow these steps to calculate a Present Value, or a "fair price" for what this loan would be worth.
+Using more detailed data on one of these loans, follow these steps to calculate a Present Value, or a "fair price" for what this loan would be worth.
 
-# 1. Use get() on the dictionary of additional information to extract the **Future Value** and **Remaining Months** on the loan.
-#     a. Save these values as variables called `future_value` and `remaining_months`.
-#     b. Print each variable.
+1. Use get() on the dictionary of additional information to extract the **Future Value** and **Remaining Months** on the loan.
+    a. Save these values as variables called `future_value` and `remaining_months`.
+    b. Print each variable.
 
-#     @NOTE:
-#     **Future Value**: The amount of money the borrower has to pay back upon maturity of the loan (a.k.a. "Face Value")
-#     **Remaining Months**: The remaining maturity (in months) before the loan needs to be fully repaid.
+    @NOTE:
+    **Future Value**: The amount of money the borrower has to pay back upon maturity of the loan (a.k.a. "Face Value")
+    **Remaining Months**: The remaining maturity (in months) before the loan needs to be fully repaid.
 
-# 2. Use the formula for Present Value to calculate a "fair value" of the loan. Use a minimum required return of 20% as the discount rate.
-# 3. Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
-#     a. If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
-#     b. Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
+2. Use the formula for Present Value to calculate a "fair value" of the loan. Use a minimum required return of 20% as the discount rate.
+3. Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
+    a. If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
+    b. Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 
-#     @NOTE:
-#     If Present Value represents the loan's fair value (given the required minimum return of 20%), does it make sense to buy the loan at its current cost?
-# """
+    @NOTE:
+    If Present Value represents the loan's fair value (given the required minimum return of 20%), does it make sense to buy the loan at its current cost?
+"""
 
-# # Given the following loan data, you will need to calculate the present value for the loan
-# loan = {
-#     "loan_price": 500,
-#     "remaining_months": 9,
-#     "repayment_interval": "bullet",
-#     "future_value": 1000,
-# }
+# Given the following loan data, you will need to calculate the present value for the loan
+loan = {
+    "loan_price": 500,
+    "remaining_months": 9,
+    "repayment_interval": "bullet",
+    "future_value": 1000,
+}
 
-# # @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
-# # Print each variable.
-# # YOUR CODE HERE!
+# @TODO: Use get() on the dictionary of additional information to extract the Future Value and Remaining Months on the loan.
+# Print each variable.
+# YOUR CODE HERE!
 
+future_value = loan.get("future_value")
+remaining_months = loan.get("remaining_months")
 
-# # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
-# # Use a minimum required return of 20% as the discount rate.
-# #   You'll want to use the **monthly** version of the present value formula.
-# #   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
+print()
+print("PART TWO")
+print()
 
-# # YOUR CODE HERE!
+print()
+print(f"Future value    :    ${future_value}")
+print()
+print(f"Remaining months:        {remaining_months} months")
 
-# # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
-# # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
-# #    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
-# #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
-# # YOUR CODE HERE!
+# @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
+# Use a minimum required return of 20% as the discount rate.
+#   You'll want to use the **monthly** version of the present value formula.
+#   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
 
+# YOUR CODE HERE!
+
+present_value = future_value / (1 + 0.2/12) ** remaining_months
+
+# If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
+# @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
+#    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
+#    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
+# YOUR CODE HERE!
+
+loan_price = loan.get("loan_price")
+
+print()
+if present_value >= loan_price :
+    print()
+    print("The loan is worth at least the cost to buy it.")
+else :
+    print()
+    print("The loan is too expensive and not worth the price.")
+print()
+print("------------------------------------------------------------")
 
 # """Part 3: Perform Financial Calculations.
 
